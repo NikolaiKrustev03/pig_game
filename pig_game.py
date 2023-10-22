@@ -63,11 +63,22 @@ def play_game():
     win_idx = players.index(max_score)
     print(f"Player {win_idx} won!")
 
+play_game()
 
 while True:
-    play_game()
 
-    play_again = input("Would you like to play again? (yes/no): ").strip().lower()
-    if play_again != "yes":
-        print("Thanks for playing!")
-        break
+    try:
+        continue_game = input("Would you like to continue? (Y/N)\n")
+        if continue_game=="Y":
+            play_game()
+        elif continue_game=="N":
+            print("Maybe you'd like to check out my other projects on https://github.com/NikolaiKrustev03")
+            break
+        elif not continue_game.isalpha():
+            print(f"{continue_game} not allowed. Only Y or N as a valid answer")
+        else:
+            print("Only Y or N as a valid answer")
+
+    except ValueError:
+        print("Invalid answer")
+
